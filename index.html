@@ -1,0 +1,33 @@
+<html>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="application/javascript"></script>
+  <script src="http://modernizr.com/downloads/modernizr-2.5.3.js" type="application/javascript"></script>
+  <script src="http://underscorejs.org/underscore.js" type="application/javascript"></script>
+  <script src="http://backbonejs.org/backbone.js" type="application/javascript"></script>
+
+  <script type="application/javascript">
+ var Router = Backbone.Router.extend({
+    routes: {
+        'other': 'other',
+            '*default': 'index'
+    },
+
+    index: function () {
+        console.log('hello world!');
+        this.navigate('/other', {
+            trigger: true,
+            replace: true
+        });
+    },
+
+    other: function () {
+        console.log('other route');
+    }
+});
+
+var router = new Router();
+Backbone.history.start({
+    hashChange: Modernizr.hashchange
+});
+  </script>
+
+</html>
